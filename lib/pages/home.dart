@@ -41,15 +41,31 @@ Band(id: '4',name: 'fabi',votes: 4),
       );
   }
 
-  ListTile _bandTile(Band band) {
-    return ListTile(
-      leading: CircleAvatar(
-        child: Text(band.name!.substring(0,2)),
-        backgroundColor: Colors.blue[100],
+  Widget _bandTile(Band band) {
+    return Dismissible(
+      key: Key(band.id!),
+      direction: DismissDirection.startToEnd,
+      onDismissed: (direction){
+        print('direction:$direction');
+        print('deleted band:${band.id}');
+      },
+      background: Container(
+        color: Colors.red.shade400,
+        padding: const EdgeInsets.only(left: 8.0),
+        child: const Align(
+          alignment: Alignment.centerLeft,
+          child: Text('Delete Band', style:TextStyle(color: Colors.white),)
+        )
       ),
-      title: Text(band.name!), 
-      trailing: Text('${band.votes}', style: const TextStyle(fontSize: 20),),
-      onTap: (){print(band.name);},  
+      child: ListTile(
+        leading: CircleAvatar(
+          child: Text(band.name!.substring(0,2)),
+          backgroundColor: Colors.blue[100],
+        ),
+        title: Text(band.name!), 
+        trailing: Text('${band.votes}', style: const TextStyle(fontSize: 20),),
+        onTap: (){print(band.name);},  
+      ),
     );
   }
 
