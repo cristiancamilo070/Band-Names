@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
 List<Band> bands =[
 Band(id: '1',name: 'cami',votes: 1),
 Band(id: '2',name: 'cris',votes: 2),
-Band(id: '3',name: 'jaco',votes: 3),
+Band(id: '3',name: 'jacobo',votes: 3),
 Band(id: '4',name: 'fabi',votes: 4),
 ];
 
