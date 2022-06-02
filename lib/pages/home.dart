@@ -46,7 +46,9 @@ Band(id: '4',name: 'fabi',votes: 4),
       key: Key(band.id!),
       direction: DismissDirection.startToEnd,
       onDismissed: (direction){
+        // ignore: avoid_print
         print('direction:$direction');
+        // ignore: avoid_print
         print('deleted band:${band.id}');
       },
       background: Container(
@@ -64,6 +66,7 @@ Band(id: '4',name: 'fabi',votes: 4),
         ),
         title: Text(band.name!), 
         trailing: Text('${band.votes}', style: const TextStyle(fontSize: 20),),
+        // ignore: avoid_print
         onTap: (){print(band.name);},  
       ),
     );
@@ -118,6 +121,7 @@ addNewBand(){
   }
 
 void addBandToList(String name){
+  // ignore: avoid_print
   print(name);
   if (name.length>1) {
     bands.add(Band(id: DateTime.now().toString(),name:name, votes: 0));
