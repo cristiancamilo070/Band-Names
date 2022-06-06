@@ -12,17 +12,18 @@ class SocketService with ChangeNotifier{
   ServerStatus _serverStatus = ServerStatus.Connecting;
 
   SocketService(){
-
+    _initConfig();
   }
 
 void _initConfig(){
 // Dart client
-  IO.Socket socket = IO.io('http://10.0.2.2:3000',   {
-      'transports':['websockets'],
+  IO.Socket socket = IO.io('http://192.168.5.108:3000',   {
+      'transports':['websocket'],
       'autoConnect':true
     }
   );
   socket.onConnect((_) {
+    // ignore: avoid_print
     print('connect');
   });
   socket.onDisconnect((_) => print('disconnect'));

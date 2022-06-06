@@ -1,3 +1,7 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "workbench.activityBar.iconClickBehavior": "toggle",
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.preferredLightColorTheme": "Tokyo Night",
+    "workbench.preferredDarkColorTheme": "Tokyo Night"
 }
