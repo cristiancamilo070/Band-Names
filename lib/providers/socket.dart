@@ -30,11 +30,19 @@ void _initConfig(){
     _serverStatus=ServerStatus.Online;
     notifyListeners();
   });
+
   socket.onDisconnect((_){
-    
     print('disconnect');
     _serverStatus=ServerStatus.Offline;
     notifyListeners();
+    }
+  );
+
+  socket.on('nuevo-mensaje',(payload){
+    print('nuevo-mensaje:');
+    print('nombre: '+ payload['nombre']);
+    print('mensaje: '+ payload['mensaje']);
+    print(payload.containsKey('mensaje2')? payload['mensaje2']:'no hay');
     }
   );
 
