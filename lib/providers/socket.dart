@@ -11,6 +11,8 @@ class SocketService with ChangeNotifier{
 
   ServerStatus _serverStatus = ServerStatus.Connecting;
 
+  get getServerStatus => _serverStatus;
+
   SocketService(){
     _initConfig();
   }
@@ -25,8 +27,16 @@ void _initConfig(){
   socket.onConnect((_) {
     // ignore: avoid_print
     print('connect');
+    _serverStatus=ServerStatus.Online;
+    notifyListeners();
   });
-  socket.onDisconnect((_) => print('disconnect'));
+  socket.onDisconnect((_){
+    
+    print('disconnect');
+    _serverStatus=ServerStatus.Offline;
+    notifyListeners();
+    }
+  );
 
 }
 }
