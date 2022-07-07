@@ -77,6 +77,9 @@ void initState() {
   }
 
   Widget _bandTile(Band band) {
+
+    final socketService=Provider.of<SocketService>(context, listen: false);
+
     return Dismissible(
       key: Key(band.id!),
       direction: DismissDirection.startToEnd,
@@ -102,7 +105,9 @@ void initState() {
         title: Text(band.name!), 
         trailing: Text('${band.votes}', style: const TextStyle(fontSize: 20),),
         // ignore: avoid_print
-        onTap: (){print(band.name);},  
+        onTap: (){
+          socketService.socket.emit('vote-band',{'id': band.id});
+        },  
       ),
     );
   }
